@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caixa</title>
+    <style>
+        .conteudo{
+            background-color: teal;
+        }
+        .caixa{
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+            color: white;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="conteudo">
+        <div id="caixaid" class="caixa">1</div>
+    </div>
+    <script>
+//          let caixa = document.getElementById('caixaid');
+             
+//          document.addEventListener('keydown', function(e){
+            
+//             // console.log(e.which)
+//             let tecla = e.which;
+//             if(tecla === 39){               
+//             // caixa.style.left = pos + 100 + 'px';    
+//             //     console.log(pos);
+//             moveDodgerLeft()
+//     }})
+//     function moveDodgerLeft() {  
+//             let atual = caixa.style.left.replace('px', '');
+//             let a = parseInt(atual)
+            
+//             caixa.style.left = a+10+'px'
+        
+    
+  
+// }
+var caixa = document.getElementById('caixaid')
+document.addEventListener('keydown', function(e) {
+  if (e.key ==="ArrowLeft") {
+    moveLeft();
+  }
+  if(e.key==="ArrowRight"){
+	moveRight();
+  }
+})
+function moveLeft() {
+  var left = parseInt(window.getComputedStyle(caixa).getPropertyValue("left"));
+		caixa.style.left = left - 2 + "px";    
+     
+}
+function moveRight() {
+  var left = parseInt(window.getComputedStyle(caixa).getPropertyValue("left"));
+		caixa.style.left = left + 2 + "px";    
+     
+}        
+    </script>
+</body>
+</html>
