@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Animação #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        div {
+            text-align: center;
+        }
+        button {
+            font-size: 1.8em;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Animação #01</h1>
+    <button>Iniciar</button>
+    <div id='animar'>Animar!</div>
+    <h1>tempo</h1>
+    <div id='div1'></div>
+    <div id='div2'></div>
+    <div id='div3'>teste</div>
+    <script>        
+        $('button').click(e=>{
+            const t = 450
+            //$('#animar').hide(t).show(t)
+             // $('#animar').hide(t).show(t)
+             $('#animar').toggle(t).toggle(t)
+            // $('#animar').fadeOut(t).fadeIn(t)
+            $('#animar').fadeToggle(t).fadeToggle(t)
+            // $('#animar').slideUp(t).slideDown(t)
+            $('#animar').slideToggle(t).slideToggle(t)
+        })
+        var start = new Date;
+
+setInterval(function() {
+    $('#div1').text(Math.round((new Date - start) / 1000, 0) + " Seconds");
+}, 1000);
+
+    //if($('#div1').html() = 2) $('#div1').slideToggle(450)
+    
+    var counter = 0;
+var timer = setInterval(function() {
+    $('#div2').text(counter)
+    
+    //if(counter  = 2 ) $('#div3').slideDown(450)
+   if( counter >= 5 ) {
+    
+    //clearInterval( timer );
+    counter = 0;
+    
+  }  
+  console.log( counter++ );
+}, 1000);
+
+
+    </script>
+</body>
