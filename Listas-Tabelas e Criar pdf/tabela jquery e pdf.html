@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela jQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+     /* #table {
+        border-collapse: collapse;
+    }
+    th, td{
+        padding: 10px;
+    }
+    thead tr {
+        border-bottom: solid 3px #444444;
+   }
+   tbody tr:hover {
+        background-color: #dedede 
+   }
+   tfoot {
+       background-color: rgb(201, 9, 9);
+       color:  #ffffff;
+       font-weight: bold;
+   }
+    tbody > :nth-of-type(odd){
+       color: white;
+       background-color: black;
+   } */
+   table
+        {
+            width: 300px;
+            font: 17px Calibri;
+        }
+        table, th, td 
+        {
+            border: solid 1px #DDD;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form>
+       <p>Add Nome</p><input type="text" id="linha">
+       
+       <button id="addButton">Adicinar</button>
+       <p>
+        <input type="button" value="Criar PDF" id="btnImprimir" onclick="CriaPDF()" />
+    </p>
+    </form>
+    <div id="tabela">
+        <table id="table" >
+            
+                <tr>
+                    <th>Índice</th>
+                    <th>Informação</th>            
+                </tr>  
+                <tr>
+                    <td>0</td>
+                    <td>55</td>
+                    
+                </tr>         
+                </table>
+    </div>
+    
+
+    <script>
+       
+        $(document).ready(function() {
+            var x = 1;
+            $('#addButton').click(function() {
+            // $('#table').show();
+            const linha = $('#linha').val();
+            const coluna = $('#coluna').val();
+            console.log(linha, coluna)
+            var table ;
+            
+           table += '<tr><td>' + x +'</td>';
+           table += '<td>'+linha+'</td></tr>';
+           x++;
+           $('#table ').append(table)
+           return false;  
+            })
+        })
+
+        function CriaPDF() {
+        var minhaTabela = document.getElementById('tabela').innerHTML;
+        var style = "<style>";
+        style = style + "table {width: 100%;font: 20px Calibri;}";
+        style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+        style = style + "padding: 2px 3px;text-align: center;}";
+        style = style + "</style>";
+        // CRIA UM OBJETO WINDOW
+        var win = window.open('', '', 'height=700,width=700');
+        win.document.write('<html><head>');
+        win.document.write('<title>Empregados</title>');   // <title> CABEÇALHO DO PDF.
+        win.document.write(style);     
+        // win.document.write('<br>');                                // INCLUI UM ESTILO NA TAB HEAD
+        win.document.write('</head>');
+        win.document.write('<body>');
+        win.document.write(minhaTabela);                          // O CONTEUDO DA TABELA DENTRO DA TAG BODY
+        win.document.write('</body></html>');
+        win.document.close(); 	                                         // FECHA A JANELA
+        win.print();                                                            // IMPRIME O CONTEUDO
+    }
+    </script>
+</body>
+</html>

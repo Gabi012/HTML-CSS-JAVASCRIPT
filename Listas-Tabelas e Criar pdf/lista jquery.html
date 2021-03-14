@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script>
+      $(document).ready(function(){
+        $("#addButton").click(function () {           
+
+			const valor = $('#input').val();
+
+			$('#lista').append('<li>'+valor+'</li>')
+			return false;
+         });
+		 });
+   </script>
+   <style>
+   
+   </style>
+   </head>
+<body>
+   <form>
+      Value: <input type="text" name="task" id="input">
+      <button id="addButton">Submit</button>
+      <br>
+
+      <p>Add a value above and click Submit to add a new list.</p>
+      <ul id="lista">
+      </ul>
+   </form>
+</body>
+</html>
